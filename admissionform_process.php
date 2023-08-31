@@ -38,8 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->execute()) {
             $message = "Registration Successful!";
 
-            // Redirect to admindashboard.php
-        header("Location: admindashboard.php");
+            // Redirect to admindashboard.html
+        header("Location: admindashboard.html");
         } else {
             $message = "Error: " . $stmt->error;
         }
