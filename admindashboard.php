@@ -32,7 +32,7 @@
 			<a  href="">Admin dashboard</a>
 		
           <div class="logout">
-			<a href="logout.php" class="btn btn-primary">Logout</a>
+			<a href="logout.html" class="btn btn-primary">Logout</a>
 		</div>
 	</header>
 
