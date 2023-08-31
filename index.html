@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>School Management System</title>
+
+
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style for the navigation bar */
+        .navbar {
+            background-color: skyblue;
+            height: 70px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            z-index: 1; /* Ensure the navigation bar is on top */
+        }
+
+        /* Style for the logo */
+        .logo img {
+            max-width: 90px;
+            height: 90px;
+        }
+
+        /* Style for the navigation list */
+        .nav-list {
+            list-style: none;
+            display: flex;
+            padding-right: 100px;
+            font-size: 20px;
+        }
+
+        /* Style for navigation list items */
+        .nav-list li {
+            margin: 0 5px;
+            line-height: 70px;
+        }
+
+        /* Style for navigation links */
+        .nav-list li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Style for the menu icon */
+        .menu-icon {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding-right: 60px;
+        }
+
+        /* Media query for small screens */
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: skyblue;
+                z-index: 2; /* Ensure the menu is on top */
+            }
+
+            .nav-list.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+                z-index: 3; /* Ensure the menu icon is on top of the menu */
+            }
+        }
+    </style>
+   
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="site_icon.jpg" alt="Site Logo">
+        </div>
+        <button class="menu-icon" onclick="toggleMenu()">☰</button>
+        <ul class="nav-list" id="navList">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="Admissionform.php">Admissions</a></li>
+            <li><a href="loginform.php">Students Login</a></li>
+            <li><a href="">Staff Login</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            var navList = document.getElementById("navList");
+            navList.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <div class="full-width-image-container">
+        <img class="full-width-image" src="topmain_image.jpg" alt="Full Width Image">
+        <div class="centered-text">Welcome to school</div>
+    </div>
+</body>
+</html>
+
+<style>
+
+.full-width-image-container {
+
+    margin-top: 90px;
+   
+    position: relative;
+    width: 100vw;
+    height: 300px; /* Set the container height to 300px */
+    overflow: hidden;
+}
+
+.full-width-image {
+    width: 100%;
+    height: 300px; /* Let the height adjust based on the image's aspect ratio */
+    object-fit: cover;
+}
+
+.centered-text {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background-color: blue;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+</style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Image Gallery</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .gallery {
+    display: flex;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .gallery img {
+    width: 50%;
+    border-radius: 20px;
+  }
+
+  .gallery-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 18px;
+    text-align: justify;
+  }
+
+  @media screen and (max-width: 768px) {
+    .gallery {
+      flex-direction: column;
+    }
+
+    .gallery img {
+      width: 100%;
+    }
+
+    .gallery-text {
+      margin-top: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="gallery">
+    <img src="graphic_design.jpg" alt="Digital Marketing">
+    <div class="gallery-text">
+      <p>Creating a Supportive Learning Environment: Teachers often believe in the importance of fostering a safe, inclusive, and supportive classroom environment that encourages collaboration, critical thinking, and respect among students, helping them thrive both socially and academically.</p>
+      <p>Creating a Supportive Learning Environment: Teachers often believe in the importance of fostering a safe, inclusive, and supportive classroom environment that encourages collaboration, critical thinking, and respect among students, helping them thrive both socially and academically.</p>
+      <p>Creating a Supportive Learning Environment: Teachers often believe in the importance of fostering a safe, inclusive, and supportive classroom environment that encourages collaboration, critical thinking, and respect among students, helping them thrive both socially and academically.</p>
+      <p>Creating a Supportive Learning Environment: Teachers often believe in the importance of fostering a safe, inclusive, and supportive classroom environment that encourages collaboration, critical thinking, and respect among students, helping them thrive both socially and academically.</p>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  
+  
+  /* Additional styles for your content */
+  .content {
+    margin-top: 20px;
+    text-align: center;
+    
+</style>
+</head>
+<body>
+  <div class="content">
+    <h1>Our Teachers</h1>
+    <!-- Your content goes here -->
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin-top: 80px;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    .gallery {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .gallery-item {
+        flex: 1;
+        max-width: calc(33.33% - 20px);
+        margin: 10px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: skyblue; /* Set the background color for gallery items */
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .image-title {
+        padding: 15px 20px;
+        background-color: inherit; /* Inherit the background color from the parent gallery-item */
+        margin: 0;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        line-height: 1.5;
+        text-align: justify;
+        color: white; /* Set text color to white for better visibility */
+    }
+
+    .image-title p:first-child {
+        margin-top: 0;
+    }
+
+    /* Media query for small screens */
+    @media (max-width: 768px) {
+        .gallery {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-item {
+            max-width: 100%;
+        }
+    }
+</style>
+<title>Responsive Image Gallery</title>
+</head>
+<body>
+<div class="gallery">
+    <!-- Digital Marketing -->
+    <div class="gallery-item">
+        <img src="teacher1.jpg" alt="Digital Marketing">
+        <div class="image-title">
+            <p>Every Student Can Learn: Teachers often believe that all students have the potential to learn and grow academically and personally, regardless of their background, abilities, or challenges.</p>
+        </div>
+    </div>
+    <!-- Graphic Design -->
+    <div class="gallery-item">
+        <img src="teacher2.jpg" alt="Graphic Design">
+        <div class="image-title">
+            <p>Teaching is a Lifelong Learning Journey: Many teachers view their profession as a continuous learning process, where they constantly seek to improve their teaching methods, adapt to new educational trends, and expand their knowledge to better serve their students.</p>
+        </div>
+    </div>
+    <!-- Web Design -->
+    <div class="gallery-item">
+        <img src="teacher3.jpg" alt="Web Design">
+        <div class="image-title">
+            <p>Creating a Supportive Learning Environment: Teachers often believe in the importance of fostering a safe, inclusive, and supportive classroom environment that encourages collaboration, critical thinking, and respect among students, helping them thrive both socially and academically.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  
+  
+  /* Additional styles for your content */
+  .content {
+    margin-top: 20px;
+    text-align: center;
+    
+</style>
+</head>
+<body>
+  <div class="content">
+    <h1>Our Subjects</h1>
+    <!-- Your content goes here -->
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin-top: 80px;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    .gallery {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .gallery-item {
+        flex: 1;
+        max-width: calc(33.33% - 20px);
+        margin: 10px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: skyblue;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .image-title {
+        padding: 15px 20px;
+        background-color: inherit;
+        margin: 0;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        line-height: 1.5;
+        text-align: justify;
+        color: white;
+    }
+
+    .image-title p:first-child {
+        margin-top: 0;
+    }
+
+    /* Media query for small screens */
+    @media (max-width: 768px) {
+        .gallery {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gallery-item {
+            max-width: 100%;
+            align-items: center; /* Center content horizontally on small screens */
+        }
+    }
+</style>
+<title>Responsive Image Gallery</title>
+</head>
+<body>
+<div class="gallery">
+    <!-- Digital Marketing -->
+    <div class="gallery-item">
+        <img src="Digital_Marketing.jpg" alt="Digital Marketing">
+        <div class="image-title">
+            <h2>Digital Marketing</h2>
+        </div>
+    </div>
+    <!-- Graphic Design -->
+    <div class="gallery-item">
+        <img src="Graphic_design.jpg" alt="Graphic Design">
+        <div class="image-title">
+            <h2>Graphic Design</h2>
+        </div>
+    </div>
+    <!-- Web Design -->
+    <div class="gallery-item">
+        <img src="Web_design.jpg" alt="Web Design">
+        <div class="image-title">
+            <h2>Web Design</h2>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
