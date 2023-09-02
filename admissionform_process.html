@@ -13,11 +13,11 @@ if ($conn->connect_error) {
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $stmt = $conn->prepare("INSERT INTO admissions (first_name, middle_name, surname, email, phone, house_address, nationality, state, lga, dob, blood_group, gender, class, fathers_name, mothers_name)
+    $stmt = $conn->prepare("INSERT INTO admissions (first_name, middle_name, surname, email, phone, house_address, nationality, state, lga, dob, blood_group, gender, class, year, fathers_name, mothers_name)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
     if ($stmt) {
-        $stmt->bind_param("sssssssssssssss", $firstname, $middlename, $surname, $email, $phone, $address, $nationality, $state, $lga, $dob, $bloodgroup, $gender, $class, $fathersname, $mothersname);
+        $stmt->bind_param("sssssssssssssss", $firstname, $middlename, $surname, $email, $phone, $address, $nationality, $state, $lga, $dob, $bloodgroup, $gender, $class, $year, $fathersname, $mothersname);
 
         $firstname = $_POST["firstname"];
         $middlename = $_POST["middlename"];
@@ -32,13 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bloodgroup = $_POST["bloodgroup"];
         $gender = $_POST["gender"];
         $class = $_POST["class"];
+        $year = $_POST["year"];
         $fathersname = $_POST["fathername"];
         $mothersname = $_POST["mothername"];
 
         if ($stmt->execute()) {
             $message = "Registration Successful!";
 
-            // Redirect to admindashboard.html
+            // Redirect to admindashboard.php
         header("Location: admindashboard.html");
         } else {
             $message = "Error: " . $stmt->error;
