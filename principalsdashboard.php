@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Principals  Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="admin.css">
+<link rel="stylesheet" type="text/css" href="container.css">
+
+
+
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <header  class="header">
+
+            <a  href="principalsdashboard.php">OKAIGBEN PRINCIPAL DASHBOARD</a>
+        
+          <div class="logout">
+            <a href="logout.php" class="btn btn-primary">Logout</a>
+        </div>
+    </header>
+
+
+
+
+    <aside>
+            
+         <ul>
+            
+        <li>
+            
+           <a href="">Admissions</a>
+      
+        </li>
+
+          <li> 
+            
+           <a href="">Teachers</a>
+      
+        </li>
+
+          <li>
+            
+           <a href="">Students</a>
+      
+        </li>
+
+          <li> 
+            
+           <a href="">Classes</a>
+      
+        </li>
+
+         <li> 
+            
+           <a href="">Subjects</a>
+      
+        </li>
+        <li> 
+            
+           <a href="">Time-table</a>
+      
+        </li>
+
+
+         <li> 
+            
+           <a href="">Exams</a>
+      
+        </li>
+
+
+         </ul>
+
+        </aside>
+
+</body>
+</html>
+
+
+
+
+<!-- FOR COLORED CONTAINERS -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>COLORED CONTAINERS</title>
+
+</head>
+        
+<body><!-- BEGINNING OF THE BODY OF ALL 4 COLORED CONTAINERS OF RED, ORANGE, BLUE, GREEN -->
+
+    <div class="colored-containers"><!-- BEGINNING OF THE HOUSING OF ALL 4 COLORED CONTAINERS OF RED, ORANGE, BLUE, GREEN -->
+
+    <!-- BEGINNING OF THE HOUSING FOR ONLY ORANGE CONTAINER -->
+    <div class="orange-container">
+        <p class="container-text">OKAIGBEN TEACHERS</p>
+
+<?php
+include("okaigbenteachers_process.php");
+?>
+
+<link rel="stylesheet" type="text/css" href="admin.css">
+    </div><!-- END OF THE HOUSING FOR ONLY ORANGE CONTAINER -->
+
+
+
+      <!-- BEGINNING OF THE HOUSING FOR ONLY RED  CONTAINER -->
+    <div class="blue-container">
+        <p class="container-text">PARENTS</p>
+
+
+<?php
+include("okaigbenparents_process.php");
+?>
+           
+    </div>  <!-- END OF THE HOUSING FOR ONLY YELLOW CONTAINER -->
+
+
+
+
+      <!-- BEGINNING OF THE HOUSING FOR ONLY GREEN  CONTAINER -->
+    <div class="green-container">
+        <p class="container-text">OKAIGBEN CLASSROOMS</p>
+
+     <?php
+include("okaigbenclassrooms_process.php");
+?>
+
+    </div>   <!-- END OF THE HOUSING FOR ONLY GREEN CONTAINER -->
+
+
+
+
+    <!-- BEGINNING OF THE HOUSING FOR ONLY RED  CONTAINER -->
+    <div class="red-container">
+        <p class="container-text">OKAIGBEN STUDENTS</p>
+
+<!-- Total number of student in usertype column in admissions -->
+
+       <?php
+include("okaigbenstudents_process.php");
+?>
+
+    </div>  <!-- END OF THE HOUSING FOR ONLY RED  CONTAINER -->
+
+</div>   <!-- END OF THE HOUSING OF 4 COLORED CONTAINERS OF RED, ORANGE, BLUE, GREEN -->
+
+
+</body> <!-- END OF THE BODY OF 4 COLORED CONTAINERS OF RED, ORANGE, BLUE, GREEN -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+*
+{
+
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+.header{
+
+background-color: deepskyblue;
+line-height: 30px;
+padding-left: 30px;
+text color: white;
+
+}
+
+a, a:hover{
+
+    text-decoration: none !important ;
+    
+}
+
+
+
+
+.logout{
+
+
+    float: right;
+    padding-right: 30px;
+
+}
+
+ul
+{
+
+    background-color: #424a5b;
+
+    width: 16%;
+    height: 100%;
+    position: fixed ;
+    padding-top: 5%;
+    text-align: center;
+}
+
+ul li
+
+{
+
+list-style: none;
+padding-bottom: 30px;
+font-size: 15px;
+
+}
+
+ul li a
+
+{
+
+    color: white;
+    font-weight: bold;
+}
+
+
+ul li a:hover
+
+{
+
+    color: skyblue;
+    text-decoration: none;
+}
+
+
+
+p{
+
+
+    font-size: 20px;
+    font-family: Times New Roman;
+}
+
+/* Media query for for <aside> in a small screens */
+    @media (max-width: 768px) {
+        ul {
+            width: 23%;
+        }
+    }
+
+
+</style>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+    <style>
+      
+        /* wide screen Styling for the calender and table container called container-wrapper */
+ .container-wrapper {
+
+    margin-top: 10px;
+    margin-bottom: 50px;
+width: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: lightgrey;
+            border-radius: 15px;
+            padding: 10px;
+            margin-left: 25%;
+            
+        }
+
+        /* Styling for the calendar container */
+       .calendar-container {
+            width: 100%;
+            max-width: 800px; /* Limit the maximum width */
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 5px; /* Add margin for spacing */
+        }
+
+
+        /* Styling for blue web page and calendar header */
+
+         .header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        /* Styling for calendar table */
+
+        table {
+            width: 100%;
+            height: 100%;
+        }
+
+       /* Styling for the mon, tue, wed, thur, fri table grey color */
+
+        th {
+            background-color: #f2f2f2;
+
+/* Styling for the date table below mon, tue, wed, thur, fri for finger cursor */
+        }
+
+        td {
+            cursor: pointer;
+
+        }
+
+        
+
+        .day-label {
+            font-weight: bold;
+        }
+
+        /* Styling for the date/event table inside grey container */
+       .table-container {
+            width: 100%;
+            max-width: 800px; /* Limit the maximum width */
+            background-color: lightgray;
+            border-radius: 15px;
+            text-align: center;
+            padding: 5px;
+            box-sizing: border-box;
+            overflow: hidden;
+            margin-bottom: 10px; /* Add margin for spacing */
+        }
+
+        /* Styling for the date/event grid lines */
+
+        table.table th, table.table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+
+
+
+        table.table tbody tr:hover {
+            background-color: #ccc;
+        }
+        <style>
+
+        }
+    </style>
+
+    
+
+    <style>
+        /* Styling for calender table */
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Styling for the first row */
+        table.table tr:first-child {
+            background-color: #ccc;
+        }
+
+        /* Set the height of the container to match the table */
+        .table-container {
+            height: auto; /* Let the container adjust its height automatically */
+        }
+
+        /* Add a bottom border to the table */
+        table.table {
+            border-bottom: 1px solid black;
+        }
+    </style>
+
+
+<style>
+    
+@media (max-width: 768px) {
+    .container-wrapper {
+        margin-left: 30%; /* Adjust the left margin for small screens on container wrapper*/
+        margin-bottom: 40px;
+        padding-right: 20px;
+    }
+}
+
+</style>
+
+</head>
+<body>
+    <div class="container-wrapper">
+        <div class="calendar-container">
+            <div class="header">
+                <button id="prevMonth" class="month-button">Previous Month</button>
+<span id="currentMonth">September 2023</span>
+<button id="nextMonth" class="month-button">Next Month</button>
+
+            </div>
+            <table>
+                <tr>
+                    <th class="day-label">Sun</th>
+                    <th class="day-label">Mon</th>
+                    <th class="day-label">Tue</th>
+                    <th class="day-label">Wed</th>
+                    <th class="day-label">Thu</th>
+                    <th class="day-label">Fri</th>
+                    <th class="day-label">Sat</th>
+                </tr>
+                <!-- Calendar days will be added using JavaScript -->
+            </table>
+        </div>    <!-- END OF CALENDER DAYS-->
+ 
+<!-- Calendar days added using JavaScript -->
+
+<script>
+    const prevMonthButton = document.getElementById("prevMonth");
+    const nextMonthButton = document.getElementById("nextMonth");
+    const currentMonthText = document.getElementById("currentMonth");
+    const calendarTable = document.querySelector(".calendar-container table");
+
+    let currentDate = new Date(2023, 8, 1); // Set to September 2023 (month 8 since months are zero-based)
+
+    function renderCalendar() {
+        // Clear the previous calendar
+        while (calendarTable.rows.length > 1) {
+            calendarTable.deleteRow(-1);
+        }
+
+        // Set the calendar header
+        const monthOptions = { month: "long", year: "numeric" };
+        currentMonthText.textContent = currentDate.toLocaleDateString(undefined, monthOptions);
+
+        // Get the first day of the month
+        const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        const startingDay = firstDay.getDay();
+
+        // Get the number of days in the month
+       
+const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+lastDay.setDate(lastDay.getDate() - 1); // Set to the last day of the current month
+const totalDays = lastDay.getDate();
+
+
+        let dayCounter = startingDay;
+        let row = calendarTable.insertRow(-1);
+
+        // Add blank cells for the days before the 1st of the month
+        for (let i = 0; i < startingDay; i++) {
+            row.insertCell(-1);
+        }
+
+        // Populate the calendar with days
+        for (let day = 1; day <= totalDays; day++) {
+            const cell = row.insertCell(-1);
+            cell.textContent = day;
+            dayCounter++;
+
+            // Start a new row at the beginning of the week
+            if (dayCounter > 6) {
+                dayCounter = 0;
+                row = calendarTable.insertRow(-1);
+            }
+        }
+    }
+
+    renderCalendar();
+
+    prevMonthButton.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+    });
+
+    nextMonthButton.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    });
+    
+</script>
+
+<!-- Table Container -->
+        <div class="table-container">
+            <h2>Okaigben Events</h2> <!-- Header above the table -->
+            <div class="button-container">
+        
+    </div>
+
+            <table class="table">
+                <tr>
+                    <th>Date</th>
+                    <th>Events</th>
+                </tr>
+                <tr>
+                    <td>Date 1</td>
+                    <td>Event 1</td>
+                </tr>
+                <tr>
+                    <td>Data 2</td>
+                    <td>Event 2</td>
+                </tr>
+                <tr>
+                    <td>Data 3</td>
+                    <td>Event 3</td>
+                </tr>
+                <tr>
+                    <td>Data 4</td>
+                    <td>Event 4</td>
+                </tr>
+                <tr>
+                    <td>Data 5</td>
+                    <td>Event 5</td>
+                </tr>
+                <tr>
+                    <td>Data 6</td>
+                    <td>Event 6</td>
+                </tr>
+                <tr>
+                    <td>Data 7</td>
+                    <td>Event 7</td>
+                </tr>
+                <tr>
+                    <td>Data 8</td>
+                    <td>Event 8</td>
+                </tr>
+            </table>
+
+
+<script>
+    
+    // JavaScript code for the table container
+    
+    const tableContainer = document.querySelector(".table-container");
+    const table = document.querySelector(".table");
+
+    // Example: Highlight rows on hover
+    table.addEventListener("mouseover", (event) => {
+        if (event.target.tagName === "TD") {
+            event.target.parentElement.classList.add("highlighted-row");
+        }
+    });
+
+    table.addEventListener("mouseout", (event) => {
+        if (event.target.tagName === "TD") {
+            event.target.parentElement.classList.remove("highlighted-row");
+        }
+    });
+
+    
+
+    tableContainer.appendChild(addRowButton);
+</script>
+
+
+        </div>   <!-- END OF TABLE CONTAINER-->
+    </div>      <!-- END OF CONTAINER-WRAPPER FOR BOTH CALENDER AND EVENT TABLE-->
+
+
+
+
+
+
+
+<style>
+    /* Styling for the previous and next buttons */
+#prevMonth,
+#nextMonth {
+    background-color: transparent; /* Set background color to transparent */
+    color: white;
+    border: none; /* Remove the border */
+    padding: 5px 7.5px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 0; /* Remove any border-radius */
+}
+
+
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    /* Vertically align the buttons and reduce vertical distance */
+    #prevMonth,
+    #nextMonth {
+        display: block; /* Display buttons as block-level elements */
+        text-align: center; /* Center-align the text */
+        margin: 0px auto 0; /* Reduce top margin to bring them closer */
+    }
+}
+
+</style>
+
+</body>
+</html>
+
+
+
+
+
+ <footer>
+    <div class="footer-content">
+        <p>&copy; 2023 Okaigben Secondary School Senior</p>
+    </div>
+</footer>
+
+
+<style>
+    /* Additional styles for the footer */
+    footer {
+        background-color: #333; /* Set background color */
+        color: white; /* Set text color */
+        text-align: center;
+        padding: 20px 0; /* Add padding to the top and bottom */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%; /* Set full width */
+        height: 10px; /* Set height to 90px */
+        margin-top: 30px;
+    }
+
+    /* Style for the copyright text */
+    footer p {
+        margin : 0;
+        font-size: 14px;
+    }
+
+    /* Media query for small screens */
+    @media (max-width: 768px) {
+        footer {
+            height: auto; /* Let the height adjust based on content */
+            padding: 5px; /* Reduce padding for small screens */
+        }
+    }
+</style>
