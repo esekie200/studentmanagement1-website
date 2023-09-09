@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Admin Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="admin.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Principals  Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="admin.css">
 
 
 
@@ -27,60 +27,60 @@
 </head>
 <body>
 
-	<header  class="header">
+    <header  class="header">
 
-			<a  href="">Admin dashboard</a>
-		
+            <a  href="principalsdashboard.php">OKAIGBEN PRINCIPAL DASHBOARD</a>
+        
           <div class="logout">
-			<a href="logout.html" class="btn btn-primary">Logout</a>
-		</div>
-	</header>
+            <a href="logout.php" class="btn btn-primary">Logout</a>
+        </div>
+    </header>
 
 
 
 
-	<aside>
-			
+    <aside>
+            
          <ul>
-         	
+            
         <li>
-        	
-           <a href="">Admissios</a>
+            
+           <a href="">Admissions</a>
       
         </li>
 
           <li> 
-        	
+            
            <a href="">Teachers</a>
       
         </li>
 
           <li>
-        	
+            
            <a href="">Students</a>
       
         </li>
 
           <li> 
-        	
+            
            <a href="">Classes</a>
       
         </li>
 
          <li> 
-        	
+            
            <a href="">Subjects</a>
       
         </li>
         <li> 
-        	
+            
            <a href="">Time-table</a>
       
         </li>
 
 
          <li> 
-        	
+            
            <a href="">Exams</a>
       
         </li>
@@ -88,18 +88,300 @@
 
          </ul>
 
-		</aside>
+        </aside>
 
-		<div class="textcontent">
+        
 
-         <h1>Sidebar Accordion</h1>
-         <p>In this example, we have added an accordion and a drop down menu inside the side navigatiom.</p>
-           <p>Click on both to understand how they differ from each other.</p>
-           <p>The accordion will push down the content while the drop down lays over the content</p>
-		</div>
+<!-- Add a new container to hold the colored rectangles -->
+<!-- Add text inside the colored containers -->
+    <div class="colored-containers">
+    <div class="orange-container">
+        <p class="container-text">OKAIGBEN TEACHERS</p>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Type Count</title>
+    <style>
+        
+        
+        .total-count {
+            font-size: 50px;
+            font-weight: bold;
+            color: white; /*white color */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <?php
+        // Database connection parameters
+        $hostname = "localhost";
+        $username = "root";
+        $password = "";
+        $databaseName = "studentmanagement1";
+
+        // Create a connection to the database
+        $conn = new mysqli($hostname, $username, $password, $databaseName);
+
+        // Check if the connection was successful
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // SQL query to sum the occurrences of "principal," "vprincipal," and "teacher" in usertype column
+        $sql = "SELECT 
+                    SUM(CASE WHEN usertype = 'principal' THEN 1 ELSE 0 END +
+                    CASE WHEN usertype = 'vprincipal' THEN 1 ELSE 0 END +
+                    CASE WHEN usertype = 'teacher' THEN 1 ELSE 0 END) AS total_count
+                FROM admissions";
+
+        // Execute the query
+        $result = $conn->query($sql);
+
+        if ($result) {
+            // Fetch the result as an associative array
+            $row = $result->fetch_assoc();
+
+            // Display the total count with styling within the <h2> tag
+            echo "<h2 class='total-count'<span >" . $row['total_count'] . "</span></h2>";
+
+            // Close the database connection
+            $conn->close();
+        } else {
+            echo "<p>Error executing query: " . $conn->error . "</p>";
+        }
+        ?>
+    </div>
+</body>
+</html>
+
+
+
+
+    </div>
+    <div class="yellow-container">
+        <p class="container-text">PARENTS</p>
+
+<?php
+    // Database connection parameters
+    $hostname = "localhost";
+    $username = "root";
+    $password = "";
+    $database_name = "studentmanagement1";
+
+    // Create a database connection
+    $conn = new mysqli($hostname, $username, $password, $database_name);
+
+    // Check the connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // SQL query to count the number of times 'parent' appears in the usertype column
+    $sql = "SELECT COUNT(*) as parent_count FROM admissions WHERE usertype = 'parent'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $parentCount = $row['parent_count'];
+} else {
+    $parentCount = 0; // Set parentCount to 0 when no results are found
+}
+
+echo "<p class='count'>$parentCount</p>"; // Always display the student count
+
+
+
+
+    // Close the database connection
+    $conn->close();
+    ?>
+
+    </div>
+    <div class="green-container">
+        <p class="container-text">OKAIGBEN CLASSROOMS</p>
+
+
+<p class='count'>3</p>
+
+    </div>
+    <div class="red-container">
+        <p class="container-text">OKAIGBEN STUDENTS</p>
+
+<!-- Total number of student in usertype column in admissions -->
+
+        <!DOCTYPE html>
+<html>
+<head>
+    <title>Count Student Users</title>
+</head>
+<body>
+    <?php
+    // Database connection parameters
+    $hostname = "localhost";
+    $username = "root";
+    $password = "";
+    $database_name = "studentmanagement1";
+
+    // Create a database connection
+    $conn = new mysqli($hostname, $username, $password, $database_name);
+
+    // Check the connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // SQL query to count the number of times 'student' appears in the usertype column
+    $sql = "SELECT COUNT(*) as student_count FROM admissions WHERE usertype = 'student'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $studentCount = $row['student_count'];
+} else {
+    $studentCount = 0; // Set studentCount to 0 when no results are found
+}
+
+echo "<p class='count'>$studentCount</p>"; // Always display the student count
+
+
+
+
+    // Close the database connection
+    $conn->close();
+    ?>
+</body>
+</html>
+
+    </div>
+</div>
 
 </body>
 </html>
+
+
+<style>
+    /* Add styles for the student count */
+    p.count {
+        font-size: 50px; /* Set the font size to your desired value */
+        font-weight: bold;
+        color: white; /* Set the text color */
+        margin-top: 0px; /* Add spacing above the text */
+        
+    }
+</style>
+
+<style>
+/* ... (your existing styles) ... */
+
+/* Add styles for the colored containers */
+ /* Add styles for the colored containers */
+.colored-containers {
+    background-color: rgba(169, 169, 169, 0.2); /* Reduce the intensity of lightgrey color by adjusting opacity */
+    display: flex;
+    justify-content: space-around;
+    padding: 20px; /* Adjust as needed for spacing */
+}
+
+.red-container, .orange-container, .yellow-container, .green-container {
+    width: 220px;
+    height: 150px;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.4); /* Add box shadow */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text horizontally */
+    justify-content: center; /* Center text vertically */
+}
+
+.red-container {
+    background-color: rgba(255, 0, 0, 0.6);
+    order: 1; /* Set the order to 4 to move it to the right */
+    margin-left: 230px;
+}
+
+.orange-container {
+    background-color: rgba(255, 165, 0, 0.6);
+    order: 2; /* Set the order to 1 */
+}
+
+.yellow-container {
+    background-color: rgba(0, 0, 225, 0.6);
+    order: 3; /* Set the order to 2 */
+}
+
+.green-container {
+    background-color: rgba(0, 225, 0, 0.6);
+    order: 4; /* Set the order to 3 */
+}
+
+
+    /* Add styles for the text inside the containers */
+    .container-text {
+        color: white;
+        font-size: 16px;
+        padding-bottom: 0%;
+        font-weight: bold;
+    }
+
+
+
+
+/* Add a media query for small screens */
+
+@media (max-width: 768px) {
+    .colored-containers {
+        flex-direction: column; /* Arrange containers vertically */
+        padding: 20px; /* Adjust spacing for small screens */
+    }
+
+    .red-container, .orange-container, .yellow-container, .green-container {
+        width: 50%; /* Full width for small screens */
+        margin-left: 280px; /* Increase left margin by 50% */
+        transform: translateX(-50%); /* Center the containers horizontally */
+        margin-bottom: 20px; /* Add margin between containers */
+        text-align: center; /* Center the text horizontally */
+    }
+
+    .container-text {
+        margin-bottom: 0px;
+        padding: 10px; /* Adjust spacing around text */
+    }
+
+    <style>
+    /* Add styles for the student count */
+    p.count {
+        font-size: 50px; /* Set the font size to your desired value */
+        font-weight: bold;
+        color: white; /* Set the text color */
+        margin-top: 0px; /* Add spacing above the text */
+        
+    }
+</style>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
 
 
 <style>
@@ -107,8 +389,8 @@
 *
 {
 
-	margin: 0px;
-	padding: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 
@@ -118,12 +400,15 @@
 background-color: deepskyblue;
 line-height: 70px;
 padding-left: 30px;
+text color: white;
 
 }
 
 a, a:hover{
-	text-decoration: none !important ;
 
+    text-decoration: none !important ;
+
+    
 }
 
 
@@ -132,21 +417,21 @@ a, a:hover{
 .logout{
 
 
-	float: right;
-	padding-right: 30px;
+    float: right;
+    padding-right: 30px;
 
 }
 
 ul
 {
 
-	background-color: #424a5b;
+    background-color: #424a5b;
 
-	width: 16%;
-	height: 100%;
-	position: fixed ;
-	padding-top: 5%;
-	text-align: center;
+    width: 16%;
+    height: 100%;
+    position: fixed ;
+    padding-top: 5%;
+    text-align: center;
 }
 
 ul li
@@ -163,8 +448,8 @@ ul li a
 
 {
 
-	color: white;
-	font-weight: bold;
+    color: white;
+    font-weight: bold;
 }
 
 
@@ -172,24 +457,17 @@ ul li a:hover
 
 {
 
-	color: skyblue;
-	text-decoration: none;
+    color: skyblue;
+    text-decoration: none;
 }
 
-.textcontent
 
-{
-
-margin-left: 30%;
-margin-top: 5%;
-
-}
 
 p{
 
 
-	font-size: 20px;
-	font-family: Times New Roman;
+    font-size: 20px;
+    font-family: Times New Roman;
 }
 
 /* Media query for for <aside> in a small screens */
@@ -202,13 +480,510 @@ p{
 
 </style>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+<style>
+    
+
+    /* Style for the month buttons */
+.month-button {
+    opacity: 1; /* Set the initial opacity */
+    transition: opacity 0.9s; /* Add a smooth transition effect */
+}
+
+/* Increase opacity when hovering over the buttons */
+.month-button:hover {
+    opacity: 1;
+}
+
+</style>
+
+
+
+
+
+
+
+    <style>
+        /* Styling for the parent container */
+        /* Styling for the parent container */
+ .container-wrapper {
+
+    margin-top: 0px;
+    margin-bottom: 20px;
+width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: lightgrey;
+            border-radius: 15px;
+            padding: 10px;
+            margin-left: 25%;
+            
+        }
+
+        /* Styling for the calendar container */
+       .calendar-container {
+            width: 100%;
+            max-width: 800px; /* Limit the maximum width */
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px; /* Add margin for spacing */
+        }
+
+         .header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        table {
+            width: 100%;
+            height: 100%;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+
+        }
+
+        th {
+            background-color: #f2f2f2;
+
+        }
+
+        td {
+            cursor: pointer;
+
+        }
+
+        /* Add a scrollbar to the table body */
+        .calendar-container table tbody {
+            overflow-y: scroll;
+            height: calc(0% - 50px); /* Adjust as needed */
+        }
+
+        .day-label {
+            font-weight: bold;
+        }
+
+        /* Styling for the table container */
+       .table-container {
+            width: 100%;
+            max-width: 800px; /* Limit the maximum width */
+            background-color: lightgray;
+            border-radius: 15px;
+            text-align: center;
+            padding: 30px;
+            box-sizing: border-box;
+            overflow: hidden;
+            margin-bottom: 20px; /* Add margin for spacing */
+        }
+
+        /* Styling for the table */
+        table.table {
+            width: 100%;
+            border: 1px solid black;
+            margin: 0; /* Remove margin to fit container */
+        }
+
+        table.table th, table.table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+
+
+
+        table.table tbody tr:hover {
+            background-color: #ccc;
+        }
+        <style>
+
+ /* Media query for small screens */
+
+
+        }
+    </style>
+    <style>
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Styling for the first row */
+        table.table tr:first-child {
+            background-color: #ccc;
+        }
+
+        /* Set the height of the container to match the table */
+        .table-container {
+            height: auto; /* Let the container adjust its height automatically */
+        }
+
+        /* Add a bottom border to the table */
+        table.table {
+            border-bottom: 1px solid black;
+        }
+    </style>
+
+
+<style>
+    
+@media (max-width: 768px) {
+    .container-wrapper {
+        margin-left: 33%; /* Adjust the left margin for small screens on container wrapper*/
+    }
+}
+
+</style>
+
+
+
+
+
+
+</head>
+<body>
+    <div class="container-wrapper">
+        <div class="calendar-container">
+            <div class="header">
+                <button id="prevMonth" class="month-button">Previous Month</button>
+<span id="currentMonth">September 2023</span>
+<button id="nextMonth" class="month-button">Next Month</button>
+
+            </div>
+            <table>
+                <tr>
+                    <th class="day-label">Sun</th>
+                    <th class="day-label">Mon</th>
+                    <th class="day-label">Tue</th>
+                    <th class="day-label">Wed</th>
+                    <th class="day-label">Thu</th>
+                    <th class="day-label">Fri</th>
+                    <th class="day-label">Sat</th>
+                </tr>
+                <!-- Calendar days will be added using JavaScript -->
+            </table>
+        </div>
+
+        <div class="table-container">
+            <h2>Okaigben Events</h2> <!-- Header above the table -->
+            <div class="button-container">
+        
+    </div>
+
+            <table class="table">
+                <tr>
+                    <th>Date</th>
+                    <th>Events</th>
+                </tr>
+                <tr>
+                    <td>Date 1</td>
+                    <td>Event 1</td>
+                </tr>
+                <tr>
+                    <td>Data 2</td>
+                    <td>Event 2</td>
+                </tr>
+                <tr>
+                    <td>Data 3</td>
+                    <td>Event 3</td>
+                </tr>
+                <tr>
+                    <td>Data 4</td>
+                    <td>Event 4</td>
+                </tr>
+                <tr>
+                    <td>Data 5</td>
+                    <td>Event 5</td>
+                </tr>
+                <tr>
+                    <td>Data 6</td>
+                    <td>Event 6</td>
+                </tr>
+                <tr>
+                    <td>Data 7</td>
+                    <td>Event 7</td>
+                </tr>
+                <tr>
+                    <td>Data 8</td>
+                    <td>Event 8</td>
+                </tr>
+            </table>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+    </script>
+   
+
+<script>
+    const prevMonthButton = document.getElementById("prevMonth");
+    const nextMonthButton = document.getElementById("nextMonth");
+    const currentMonthText = document.getElementById("currentMonth");
+    const calendarTable = document.querySelector(".calendar-container table");
+
+    let currentDate = new Date(2023, 8, 1); // Set to September 2023 (month 8 since months are zero-based)
+
+    function renderCalendar() {
+        // Clear the previous calendar
+        while (calendarTable.rows.length > 1) {
+            calendarTable.deleteRow(-1);
+        }
+
+        // Set the calendar header
+        const monthOptions = { month: "long", year: "numeric" };
+        currentMonthText.textContent = currentDate.toLocaleDateString(undefined, monthOptions);
+
+        // Get the first day of the month
+        const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        const startingDay = firstDay.getDay();
+
+        // Get the number of days in the month
+       
+const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1);
+lastDay.setDate(lastDay.getDate() - 1); // Set to the last day of the current month
+const totalDays = lastDay.getDate();
+
+
+        let dayCounter = startingDay;
+        let row = calendarTable.insertRow(-1);
+
+        // Add blank cells for the days before the 1st of the month
+        for (let i = 0; i < startingDay; i++) {
+            row.insertCell(-1);
+        }
+
+        // Populate the calendar with days
+        for (let day = 1; day <= totalDays; day++) {
+            const cell = row.insertCell(-1);
+            cell.textContent = day;
+            dayCounter++;
+
+            // Start a new row at the beginning of the week
+            if (dayCounter > 6) {
+                dayCounter = 0;
+                row = calendarTable.insertRow(-1);
+            }
+        }
+    }
+
+    renderCalendar();
+
+    prevMonthButton.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+    });
+
+    nextMonthButton.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    });
+
+
+
+
+
+    
+</script>
+
+<script>
+    
+    // JavaScript code for the table
+    
+    const tableContainer = document.querySelector(".table-container");
+    const table = document.querySelector(".table");
+
+    // Example: Highlight rows on hover
+    table.addEventListener("mouseover", (event) => {
+        if (event.target.tagName === "TD") {
+            event.target.parentElement.classList.add("highlighted-row");
+        }
+    });
+
+    table.addEventListener("mouseout", (event) => {
+        if (event.target.tagName === "TD") {
+            event.target.parentElement.classList.remove("highlighted-row");
+        }
+    });
+
+    
+
+    tableContainer.appendChild(addRowButton);
+</script>
+
+
+
+
+<style>
+    /* Styling for the previous and next buttons */
+#prevMonth,
+#nextMonth {
+    background-color: transparent; /* Set background color to transparent */
+    color: white;
+    border: none; /* Remove the border */
+    padding: 5px 7.5px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 0; /* Remove any border-radius */
+}
+
+
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    /* Vertically align the buttons and reduce vertical distance */
+    #prevMonth,
+    #nextMonth {
+        display: block; /* Display buttons as block-level elements */
+        text-align: center; /* Center-align the text */
+        margin: 5px auto 0; /* Reduce top margin to bring them closer */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  <footer>
     <div class="footer-content">
-        <p>&copy; 2023 Okaigben Secondary School | Powered by Okaigben Secondary School Senior</p>
+        <p>&copy; 2023 Okaigben Secondary School Senior</p>
     </div>
 </footer>
-
-
 
 
 <style>
