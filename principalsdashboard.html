@@ -663,3 +663,111 @@ const totalDays = lastDay.getDate();
         }
     }
 </style>
+
+
+
+<style>
+
+  /* Add styles for the students, parents and class rooms, and teachers count */
+
+
+
+  /* Add styles for total staff count */
+
+ p.count {
+        font-size: 50px; /* Set the font size to your desired value */
+        font-weight: bold;
+        color: white; /* Set the text color */
+        margin-top: 0px; /* Add spacing above the text */
+    }
+
+ 
+                                      /* Add styles for colored containers */
+
+
+/* Add styles for the container housing the 4 red orange blue and green container */
+ 
+.colored-containers {
+    background-color: rgba(169, 169, 169, 0.2); /* Reduce the intensity of lightgrey color by adjusting opacity */
+    display: flex;
+    justify-content: space-around;
+    padding: 20px; /* Adjust as needed for spacing */
+}
+
+
+/* Add styles to set all 4 colored containers to have the same attributes */
+.red-container, .orange-container, .blue-container, .green-container {
+    width: 220px;
+    height: 150px;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.4); /* Add box shadow */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text horizontally */
+    justify-content: center; /* Center text vertically */
+}
+
+/* Add styles for red container */
+
+.red-container {
+    background-color: rgba(255, 0, 0, 0.6);
+    order: 1; /* Set the order to 1 to move it to the left */
+    margin-left: 230px;
+}
+
+/* Add styles for orange container */
+.orange-container {
+    background-color: rgba(255, 165, 0, 0.6);
+    order: 2; /* Set the order to 2 */
+}
+
+
+/* Add styles for blue container */
+.blue-container {
+    background-color: rgba(0, 0, 225, 0.6);
+    order: 3; /* Set the order to 3 */
+}
+
+/* Add styles for green container */
+
+.green-container {
+    background-color: rgba(0, 225, 0, 0.6);
+    order: 4; /* Set the order to 4 */
+}
+
+
+    /* Add styles for the text inside the containers */
+    .container-text {
+        color: white;
+        font-size: 16px;
+        padding-bottom: 0%;
+        font-weight: bold;
+    }
+
+
+
+
+/* Add a media query for small screens (4 colored box)*/
+
+@media (max-width: 768px) {
+    .colored-containers {
+        flex-direction: column; /* Arrange containers vertically */
+        padding: 10px; /* Adjust spacing for small screens */
+    }
+
+    .red-container, .orange-container, .blue-container, .green-container {
+        width: 50%; /* Full width for small screens */
+        margin-left: 290px; /* Increase left margin by 50% */
+        transform: translateX(-50%); /* Center the containers horizontally */
+        margin-bottom: 20px; /* Add margin between containers */
+        text-align: center; /* Center the text horizontally */
+    }
+
+    .container-text {
+        margin-bottom: 0px;
+        padding: 10px; /* Adjust spacing around text */
+    }
+}     
+
+</style>
+
