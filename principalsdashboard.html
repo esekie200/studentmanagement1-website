@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Principals  Dashboard</title>
     <link rel="stylesheet" type="text/css" href="admin.css">
-<link rel="stylesheet" type="text/css" href="container.css">
+
 
 
 
@@ -26,7 +26,7 @@
 
     <header  class="header">
 
-            <a  href="principalsdashboard.php">PRINCIPALs DASHBOARD</a>
+            <a  href="principalsdashboard.php">OKAIGBEN PRINCIPAL DASHBOARD</a>
         
           <div class="logout">
             <a href="logout.php" class="btn btn-primary">Logout</a>
@@ -112,11 +112,65 @@
     <div class="orange-container">
         <p class="container-text">OKAIGBEN TEACHERS</p>
 
-<?php
-include("okaigbenteachers_process.php");
-?>
 
-<link rel="stylesheet" type="text/css" href="admin.css">
+<!DOCTYPE html><!-- PROCESS FOR NUMBER OF TEACHERS -->
+<html>
+<head>
+    <title>User Type Count</title>
+    <style>
+        
+        
+        .total-count {
+            font-size: 50px;
+            font-weight: bold;
+            color: white; /*white color */
+        }
+    </style>
+</head>
+<body>
+    
+        <?php
+        // Database connection parameters
+        $hostname = "localhost";
+        $username = "root";
+        $password = "";
+        $databaseName = "studentmanagement1";
+
+        // Create a connection to the database
+        $conn = new mysqli($hostname, $username, $password, $databaseName);
+
+        // Check if the connection was successful
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        // SQL query to sum the occurrences of "principal," "vprincipal," and "teacher" in usertype column
+        $sql = "SELECT 
+                    SUM(CASE WHEN usertype = 'principal' THEN 1 ELSE 0 END +
+                    CASE WHEN usertype = 'vprincipal' THEN 1 ELSE 0 END +
+                    CASE WHEN usertype = 'teacher' THEN 1 ELSE 0 END) AS total_count
+                FROM admissions";
+
+        // Execute the query
+        $result = $conn->query($sql);
+
+        if ($result) {
+            // Fetch the result as an associative array
+            $row = $result->fetch_assoc();
+
+            // Display the total count with styling within the <h2> tag
+            echo "<h2 class='total-count'<span >" . $row['total_count'] . "</span></h2>";
+
+            // Close the database connection
+            $conn->close();
+        } else {
+            echo "<p>Error executing query: " . $conn->error . "</p>";
+        }
+        ?>
+    
+</body>
+</html>   <!-- END OF PROCESS FOR NUMBER OF TEACHERS -->
+
     </div><!-- END OF THE HOUSING FOR ONLY ORANGE CONTAINER -->
 
 
@@ -125,11 +179,47 @@ include("okaigbenteachers_process.php");
     <div class="blue-container">
         <p class="container-text">PARENTS</p>
 
+            <!DOCTYPE html> <!-- PROCESS FOR NUMBER OF PARENTS OUTPUT -->
+<html>
+<head>
+    <title>PARENT COUNT</title>
+</head>
+<body>
 
 <?php
-include("okaigbenparents_process.php");
-?>
-           
+    // Database connection parameters
+    $hostname = "localhost";
+    $username = "root";
+    $password = "";
+    $database_name = "studentmanagement1";
+
+    // Create a database connection
+    $conn = new mysqli($hostname, $username, $password, $database_name);
+
+    // Check the connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // SQL query to count the number of times 'parent' appears in the usertype column
+    $sql = "SELECT COUNT(*) as parent_count FROM admissions WHERE usertype = 'parent'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $parentCount = $row['parent_count'];
+} else {
+    $parentCount = 0; // Set parentCount to 0 when no results are found
+}
+
+echo "<p class='count'>$parentCount</p>"; // Always display the student count
+
+    // Close the database connection
+    $conn->close();
+    ?>
+
+    </body>
+</html><!-- END OF PROCESS FOR NUMBER OF PARENTS OUTPUT -->
     </div>  <!-- END OF THE HOUSING FOR ONLY YELLOW CONTAINER -->
 
 
@@ -139,9 +229,7 @@ include("okaigbenparents_process.php");
     <div class="green-container">
         <p class="container-text">OKAIGBEN CLASSROOMS</p>
 
-     <?php
-include("okaigbenclassrooms_process.php");
-?>
+     <p class='count'>3</p>
 
     </div>   <!-- END OF THE HOUSING FOR ONLY GREEN CONTAINER -->
 
@@ -154,14 +242,49 @@ include("okaigbenclassrooms_process.php");
 
 <!-- Total number of student in usertype column in admissions -->
 
-       <?php
-include("okaigbenstudents_process.php");
-?>
+        <!DOCTYPE html><!-- PROCESS FOR NUMBER OF STUDENTS OUTPUT -->
+<html>
+<head>
+    <title>Count Student Users</title>
+</head>
+<body>
+    <?php
+    // Database connection parameters
+    $hostname = "localhost";
+    $username = "root";
+    $password = "";
+    $database_name = "studentmanagement1";
+
+    // Create a database connection
+    $conn = new mysqli($hostname, $username, $password, $database_name);
+
+    // Check the connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // SQL query to count the number of times 'student' appears in the usertype column
+    $sql = "SELECT COUNT(*) as student_count FROM admissions WHERE usertype = 'student'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $studentCount = $row['student_count'];
+} else {
+    $studentCount = 0; // Set studentCount to 0 when no results are found
+}
+
+echo "<p class='count'>$studentCount</p>"; // Always display the student count
+
+    // Close the database connection
+    $conn->close();
+    ?>
+</body>
+</html><!-- END OF PROCESS FOR NUMBER OF PARENTS OUTPUT -->
 
     </div>  <!-- END OF THE HOUSING FOR ONLY RED  CONTAINER -->
 
 </div>   <!-- END OF THE HOUSING OF 4 COLORED CONTAINERS OF RED, ORANGE, BLUE, GREEN -->
-
 
 </body> <!-- END OF THE BODY OF 4 COLORED CONTAINERS OF RED, ORANGE, BLUE, GREEN -->
 </html>
@@ -171,7 +294,111 @@ include("okaigbenstudents_process.php");
 
 
 
+<style>
 
+  /* Add styles for the students, parents and class rooms, and teachers count */
+
+
+
+  /* Add styles for total staff count */
+
+ p.count {
+        font-size: 50px; /* Set the font size to your desired value */
+        font-weight: bold;
+        color: white; /* Set the text color */
+        margin-top: 0px; /* Add spacing above the text */
+    }
+
+ 
+                                      /* Add styles for colored containers */
+
+
+/* Add styles for the container housing the 4 red orange blue and green container */
+ 
+.colored-containers {
+    background-color: rgba(169, 169, 169, 0.2); /* Reduce the intensity of lightgrey color by adjusting opacity */
+    display: flex;
+    justify-content: space-around;
+    padding: 20px; /* Adjust as needed for spacing */
+}
+
+
+/* Add styles to set all 4 colored containers to have the same attributes */
+.red-container, .orange-container, .blue-container, .green-container {
+    width: 220px;
+    height: 150px;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.4); /* Add box shadow */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text horizontally */
+    justify-content: center; /* Center text vertically */
+}
+
+/* Add styles for red container */
+
+.red-container {
+    background-color: rgba(255, 0, 0, 0.6);
+    order: 1; /* Set the order to 1 to move it to the left */
+    margin-left: 230px;
+}
+
+/* Add styles for orange container */
+.orange-container {
+    background-color: rgba(255, 165, 0, 0.6);
+    order: 2; /* Set the order to 2 */
+}
+
+
+/* Add styles for blue container */
+.blue-container {
+    background-color: rgba(0, 0, 225, 0.6);
+    order: 3; /* Set the order to 3 */
+}
+
+/* Add styles for green container */
+
+.green-container {
+    background-color: rgba(0, 225, 0, 0.6);
+    order: 4; /* Set the order to 4 */
+}
+
+
+    /* Add styles for the text inside the containers */
+    .container-text {
+        color: white;
+        font-size: 16px;
+        padding-bottom: 0%;
+        font-weight: bold;
+    }
+
+</style>
+
+<style>
+
+/* Add a media query for small screens (4 colored box)*/
+
+@media (max-width: 768px) {
+    .colored-containers {
+        flex-direction: column; /* Arrange containers vertically */
+        padding: 10px; /* Adjust spacing for small screens */
+    }
+
+    .red-container, .orange-container, .blue-container, .green-container {
+        width: 50%; /* Full width for small screens */
+        margin-left: 280px; /* Increase left margin by 50% */
+        transform: translateX(-50%); /* Center the containers horizontally */
+        margin-bottom: 20px; /* Add margin between containers */
+        text-align: center; /* Center the text horizontally */
+    }
+
+    .container-text {
+        margin-bottom: 0px;
+        padding: 10px; /* Adjust spacing around text */
+    }
+}        
+
+</style>
 
 
 
@@ -193,7 +420,7 @@ include("okaigbenstudents_process.php");
 .header{
 
 background-color: deepskyblue;
-line-height: 30px;
+line-height: 70px;
 padding-left: 30px;
 text color: white;
 
@@ -202,6 +429,7 @@ text color: white;
 a, a:hover{
 
     text-decoration: none !important ;
+
     
 }
 
@@ -267,12 +495,31 @@ p{
 /* Media query for for <aside> in a small screens */
     @media (max-width: 768px) {
         ul {
-            width: 25%;
+            width: 23%;
         }
     }
 
 
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -288,9 +535,9 @@ p{
         /* wide screen Styling for the calender and table container called container-wrapper */
  .container-wrapper {
 
-    margin-top: 10px;
-    margin-bottom: 50px;
-width: 70%;
+    margin-top: 0px;
+    margin-bottom: 20px;
+width: 60%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -308,7 +555,7 @@ width: 70%;
             background-color: #fff;
             border-radius: 15px;
             overflow: hidden;
-            margin-bottom: 5px; /* Add margin for spacing */
+            margin-bottom: 20px; /* Add margin for spacing */
         }
 
 
@@ -355,10 +602,10 @@ width: 70%;
             background-color: lightgray;
             border-radius: 15px;
             text-align: center;
-            padding: 5px;
+            padding: 30px;
             box-sizing: border-box;
             overflow: hidden;
-            margin-bottom: 10px; /* Add margin for spacing */
+            margin-bottom: 20px; /* Add margin for spacing */
         }
 
         /* Styling for the date/event grid lines */
@@ -411,9 +658,7 @@ width: 70%;
     
 @media (max-width: 768px) {
     .container-wrapper {
-        margin-left: 30%; /* Adjust the left margin for small screens on container wrapper*/
-        margin-bottom: 40px;
-        padding-right: 20px;
+        margin-left: 33%; /* Adjust the left margin for small screens on container wrapper*/
     }
 }
 
@@ -646,12 +891,11 @@ const totalDays = lastDay.getDate();
         left: 0;
         width: 100%; /* Set full width */
         height: 10px; /* Set height to 90px */
-        margin-top: 30px;
     }
 
     /* Style for the copyright text */
     footer p {
-        margin : 0;
+        margin: 0;
         font-size: 14px;
     }
 
@@ -659,115 +903,7 @@ const totalDays = lastDay.getDate();
     @media (max-width: 768px) {
         footer {
             height: auto; /* Let the height adjust based on content */
-            padding: 5px; /* Reduce padding for small screens */
+            padding: 10px; /* Reduce padding for small screens */
         }
     }
 </style>
-
-
-
-<style>
-
-  /* Add styles for the students, parents and class rooms, and teachers count */
-
-
-
-  /* Add styles for total staff count */
-
- p.count {
-        font-size: 50px; /* Set the font size to your desired value */
-        font-weight: bold;
-        color: white; /* Set the text color */
-        margin-top: 0px; /* Add spacing above the text */
-    }
-
- 
-                                      /* Add styles for colored containers */
-
-
-/* Add styles for the container housing the 4 red orange blue and green container */
- 
-.colored-containers {
-    background-color: rgba(169, 169, 169, 0.2); /* Reduce the intensity of lightgrey color by adjusting opacity */
-    display: flex;
-    justify-content: space-around;
-    padding: 20px; /* Adjust as needed for spacing */
-}
-
-
-/* Add styles to set all 4 colored containers to have the same attributes */
-.red-container, .orange-container, .blue-container, .green-container {
-    width: 220px;
-    height: 150px;
-    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.4); /* Add box shadow */
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center text horizontally */
-    justify-content: center; /* Center text vertically */
-}
-
-/* Add styles for red container */
-
-.red-container {
-    background-color: rgba(255, 0, 0, 0.6);
-    order: 1; /* Set the order to 1 to move it to the left */
-    margin-left: 230px;
-}
-
-/* Add styles for orange container */
-.orange-container {
-    background-color: rgba(255, 165, 0, 0.6);
-    order: 2; /* Set the order to 2 */
-}
-
-
-/* Add styles for blue container */
-.blue-container {
-    background-color: rgba(0, 0, 225, 0.6);
-    order: 3; /* Set the order to 3 */
-}
-
-/* Add styles for green container */
-
-.green-container {
-    background-color: rgba(0, 225, 0, 0.6);
-    order: 4; /* Set the order to 4 */
-}
-
-
-    /* Add styles for the text inside the containers */
-    .container-text {
-        color: white;
-        font-size: 16px;
-        padding-bottom: 0%;
-        font-weight: bold;
-    }
-
-
-
-
-/* Add a media query for small screens (4 colored box)*/
-
-@media (max-width: 768px) {
-    .colored-containers {
-        flex-direction: column; /* Arrange containers vertically */
-        padding: 10px; /* Adjust spacing for small screens */
-    }
-
-    .red-container, .orange-container, .blue-container, .green-container {
-        width: 65%; /* Full width for small screens */
-        margin-left: 220px; /* Increase left margin by 50% */
-        transform: translateX(-50%); /* Center the containers horizontally */
-        margin-bottom: 20px; /* Add margin between containers */
-        text-align: center; /* Center the text horizontally */
-    }
-
-    .container-text {
-        margin-bottom: 0px;
-        padding: 10px; /* Adjust spacing around text */
-    }
-}     
-
-</style>
-
