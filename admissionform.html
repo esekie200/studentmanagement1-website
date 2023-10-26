@@ -1,21 +1,4 @@
 
-<?php
-// Check if the PIN is provided in the URL parameters
-if (!isset($_GET["pin"]) || empty($_GET["pin"])) {
-    // PIN is missing, redirect back to paymentpin.php
-    header("Location: paymentpin2324term1.php");
-    exit();
-}
-
-// Retrieve the PIN from the URL
-$enteredPin = $_GET["pin"];
-
-// You can add additional checks here if needed, such as verifying the PIN against a database
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
